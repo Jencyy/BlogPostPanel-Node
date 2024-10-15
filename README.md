@@ -25,24 +25,40 @@ Welcome to the **Blog Post Panel** project! This application allows users to cre
 ## 📂 Project Structure
 
 /Blog-Post-Panel │ 
+
 ├── /views │
+
 ├── /partials │
+
 ├── /auth │ 
+
 ├── /blogs │
       └── layout.ejs │
+
 ├── /public │ 
+
 ├── /css │ 
+
 ├── /images │
       └── /js │
+
 ├── /routes │ 
+
 ├── auth.js │
+
 ├── blogs.js │
       └── index.js │
+
 ├── /controllers
+
 ├── /models 
+
 ├── /middleware
+
 ├── app.js
+
 ├── package.json 
+
 └── README.md
 
 
@@ -65,17 +81,14 @@ Welcome to the **Blog Post Panel** project! This application allows users to cre
 ## ✨ Screenshots
 
 ### Home Page
-![Home Page]
 ![Screenshot 2024-10-15 205933](https://github.com/user-attachments/assets/bb75a370-6133-4964-b117-0686c2d11f46)
 
 ### Blog Post Page
 
-![Blog Post Page]
 ![Screenshot 2024-10-04 162847](https://github.com/user-attachments/assets/9c301e1c-a73c-4c9b-abe0-c6af209a848a)
 
 
 ### Comment Section
-![Comment Section]
 ![Screenshot 2024-10-15 210018](https://github.com/user-attachments/assets/15d968f1-9e85-41cd-8207-5b516444f97b)
 
 
