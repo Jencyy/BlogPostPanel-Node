@@ -24,43 +24,31 @@ Welcome to the **Blog Post Panel** project! This application allows users to cre
 
 ## 📂 Project Structure
 
-/Blog-Post-Panel │ 
 
-├── /views │
-
-├── /partials │
-
-├── /auth │ 
-
-├── /blogs │
-      └── layout.ejs │
-
-├── /public │ 
-
-├── /css │ 
-
-├── /images │
-      └── /js │
-
-├── /routes │ 
-
-├── auth.js │
-
-├── blogs.js │
-      └── index.js │
-
+/Blog-Post-Panel
+│
+├── /views
+│   ├── /partials
+│   ├── /auth
+│   ├── /blogs
+│   └── layout.ejs
+│
+├── /public
+│   ├── /css
+│   ├── /images
+│   └── /js
+│
+├── /routes
+│   ├── auth.js
+│   ├── blogs.js
+│   └── index.js
+│
 ├── /controllers
-
-├── /models 
-
+├── /models
 ├── /middleware
-
 ├── app.js
-
-├── package.json 
-
+├── package.json
 └── README.md
-
 
 ## 🔧 Setup Instructions
 
