@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Blogs</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 2rem;
+        }
+
+        /* Container for the blog list */
+        .blogs-list {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .blog-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* Blog Card Styles */
+        .blog-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 5px solid #6c63ff;
+        }
+
+        .blog-content {
+            padding: 15px;
+        }
+
+        .blog-content h3 {
+            font-size: 1.5rem;
+            color: #6c63ff;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .blog-content p {
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        /* Comment Section */
+        .comments-section {
+            padding: 15px;
+            border-top: 1px solid #ddd;
+            background-color: #f9f9f9;
+            margin-top: 10px;
+        }
+
+        .comments-section h4 {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .avatar {
+            width: 35px;
+            height: 35px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .comment-list {
+            margin-bottom: 15px;
+        }
+
+        .comment-item {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: none; /* Hidden by default */
+        }
+
+        .comment-item.show {
+            display: flex; /* Show visible comments */
+        }
+
+        .comment-item p {
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .comment-item span {
+            font-weight: bold;
+            color: #6c63ff;
+        }
+
+        /* Comment Form */
+        .comment-form textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            resize: none;
+            font-size: 0.9rem;
+        }
+
+        .comment-form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #6c63ff;
+            color: white;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .comment-form button:hover {
+            background-color: #5a56d6;
+        }
+
+        /* Mobile Friendly Adjustments */
+        @media (max-width: 600px) {
+            .blogs-list {
+                padding: 10px;
+            }
+
+            .blog-actions {
+                flex-direction: column;
+            }
+
+            .btn-edit,
+            .btn-delete {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+
+        .commentUser {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            font-size: 15px;
+        }
+
+        .comment-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .comment-chat {
+            width: 100%;
+            margin: 5px;
+        }
+
+        .comment {
+            width: 100%;
+            display: block;
+            color: rgba(0, 0, 0, 0.799) !important;
+        }
+
+        .show-more-btn,
+        .show-less-btn {
+            background-color: transparent;
+            border: none;
+            color: #6c63ff;
+            cursor: pointer;
+            margin-top: 10px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .show-more-btn:hover,
+        .show-less-btn:hover {
+            color: #5a56d6;
+        }
+         /* Hide additional comments initially */
+         .hidden-comment {
+            display: none;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <%- include('../particals/header.ejs') %> <!-- Include header -->
+
+    <div class="blogs-list">
+        <h2>All Blogs</h2>
+        <div class="blog-cards">
+            <% blogs.forEach(blog=> { %>
+                <div class="blog-card">
+                    <div>  
+                        <img src="/upload/<%= blog.image %>" alt="Blog Image" class="blog-image"> 
+                    </div>
+
+                    <div class="blog-content">
+                        <h3>
+                            <%= blog.title %>
+                        </h3>
+                        <p>
+                            <%= blog.content.substring(0, 100) %>...
+                        </p>
+                    </div>
+
+                    <!-- Comment Section -->
+                    <div class="comments-section">
+                        <h4>Comments</h4>
+                        <div class="comment-list">
+                            <% const blogComments = comments.filter(comment => 
+                                comment.blog._id.equals(blog._id)
+                            ); %>
+
+                            <% blogComments.reverse().slice(0, 2).forEach(comment => { %>
+                                <div class="comment-item">
+                                    <div>
+                                        <img src="../../<%= comment.user.profilePic %>" alt="<%= comment.user.name %>" class="avatar" />
+                                    </div>
+                                    <div class="comment-chat">
+                                        <span class="commentUser">@<%= comment.user.name %></span>
+                                        <span class="comment"><%= comment.comment %></span>
+                                    </div>
+                                </div>
+                            <% }) %>
+
+                            <!-- Hidden Comments -->
+                            <div id="hidden-comments-<%= blog._id %>" class="hidden-comment">
+                                <% blogComments.slice(2).forEach(comment => { %>
+                                    <div class="comment-item">
+                                        <div>
+                                            <img src="../../<%= comment.user.profilePic %>" alt="<%= comment.user.name %>" class="avatar" />
+                                        </div>
+                                        <div class="comment-chat">
+                                            <span class="commentUser">@<%= comment.user.name %></span>
+                                            <span class="comment"><%= comment.comment %></span>
+                                        </div>
+                                    </div>
+                                <% }) %>
+                            </div>
+                        </div>
+
+                        <!-- Comment Form -->
+                        <form class="comment-form" action="/blogs/<%= blog._id %>/comment" method="POST">
+                            <textarea name="comment" rows="3" placeholder="Add a comment..." required></textarea>
+                            <button type="submit">Post Comment</button>
+                        </form>
+
+                        <!-- Show More / Show Less Buttons -->
+                        <button id="show-more-<%= blog._id %>" class="show-more-btn" onclick="toggleComments('<%= blog._id %>')">Show More</button>
+                        <button id="show-less-<%= blog._id %>" class="hidden-comment show-less-btn" onclick="toggleComments('<%= blog._id %>')">Show Less</button>
+
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+
+    <%- include('../particals/footer.ejs') %> <!-- Include footer -->
+
+    <script>
+        function toggleComments(blogId) {
+            const hiddenComments = document.getElementById(`hidden-comments-${blogId}`);
+            const showMoreBtn = document.getElementById(`show-more-${blogId}`);
+            const showLessBtn = document.getElementById(`show-less-${blogId}`);
+
+            if (hiddenComments.style.display === 'none' || hiddenComments.style.display === '') {
+                // Show all comments
+                hiddenComments.style.display = 'block';
+                showMoreBtn.style.display = 'none';
+                showLessBtn.style.display = 'inline';
+            } else {
+                // Hide extra comments (only show first 2)
+                hiddenComments.style.display = 'none';
+                showMoreBtn.style.display = 'inline';
+                showLessBtn.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Add New Blog</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #6c63ff;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"], textarea, input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus, textarea:focus {
+            border-color: #6c63ff;
+            outline: none;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #6c63ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color:#6c63ff;
+        }
+    </style>
+</head>
+<body>
+ 
+    <div class="container">
+        <h2>Add New Blog</h2>
+        <form action="/blogs/add" method="post" enctype="multipart/form-data">
+            <div>
+                <label for="title">Title:</label>
+                <input type="text" name="title" required>
+            </div>
+            <div>
+                <label for="content">Content:</label>
+                <textarea name="content" required></textarea>
+            </div>
+            <div>
+                <label for="image">Image:</label>
+                <input type="file" name="image">
+            </div>
+            <button type="submit">Add Blog</button>
+        </form>
+    </div>
+   <%- include('../particals/footer.ejs') %>
+</body>
+</html>
