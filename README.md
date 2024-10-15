@@ -39,21 +39,37 @@ Welcome to the **Blog Post Panel** project! This application allows users to cre
 │   └── layout.ejs
 
 │
+
 ├── /public
+
 │   ├── /css
+
 │   ├── /images
+
 │   └── /js
+
 │
+
 ├── /routes
+
 │   ├── auth.js
+
 │   ├── blogs.js
+
 │   └── index.js
+
 │
+
 ├── /controllers
+
 ├── /models
+
 ├── /middleware
+
 ├── app.js
+
 ├── package.json
+
 └── README.md
 
 ## 🔧 Setup Instructions
