@@ -27,11 +27,17 @@ Welcome to the **Blog Post Panel** project! This application allows users to cre
 
 /Blog-Post-Panel
 │
+
 ├── /views
+
 │   ├── /partials
+
 │   ├── /auth
+
 │   ├── /blogs
+
 │   └── layout.ejs
+
 │
 ├── /public
 │   ├── /css
